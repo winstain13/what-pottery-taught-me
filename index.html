@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Pottery Taught Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: white;
+            padding: 60px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            z-index: 1;
+        }
+
+        .milestone {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+        }
+
+        .milestone-dot {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+        }
+
+        .milestone-label {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #667eea;
+        }
+
+        /* Stages Section */
+        .stages {
+            padding: 60px 20px;
+        }
+
+        .stage {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stage:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .stage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stage-number {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .stage-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .stage-duration {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .stage-description {
+            font-size: 1.1rem;
+            color: #34495e;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .stage-steps {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .stage-steps h4 {
+            font-size: 1rem;
+            color: #667eea;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stage-steps ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .stage-steps li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #2c3e50;
+        }
+
+        .stage-steps li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Reflection Section */
+        .reflection {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .reflection h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reflection p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .timeline::before {
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 4px;
+                height: auto;
+                transform: translateX(-50%);
+            }
+
+            .stage {
+                padding: 24px;
+            }
+
+            .stage-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stage-title {
+                margin: 10px 0;
+                font-size: 1.5rem;
+            }
+
+            .reflection h2 {
+                font-size: 1.75rem;
+            }
+
+            .reflection p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>What Pottery Taught Me</h1>
+            <p>The beauty of having less control than you think</p>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <h2 class="timeline-title">The Journey</h2>
+        <div class="container">
+            <div class="timeline">
+                <div class="milestone">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-label">Greenware</div>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-label">Bisqueware</div>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-label">Finished Product</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stages -->
+    <section class="stages">
+        <div class="container">
+            <!-- Stage 1: Preparing the Clay -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-number">Stage 1</span>
+                    <h3 class="stage-title">Preparing the Clay</h3>
+                    <span class="stage-duration">30 minutes – 1 hour</span>
+                </div>
+                <p class="stage-description">
+                    Before you can create, you must prepare. This stage is about getting the clay ready—removing air bubbles, achieving the right consistency, and making sure your material is workable. It's humble work, but essential.
+                </p>
+                <div class="stage-steps">
+                    <h4>Steps</h4>
+                    <ul>
+                        <li>Weighing the clay to the desired amount</li>
+                        <li>Wedging to remove air pockets and achieve consistency</li>
+                        <li>Kneading until the clay feels smooth and pliable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 2: Forming (Wheel Throwing) -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-number">Stage 2</span>
+                    <h3 class="stage-title">Forming (Wheel Throwing)</h3>
+                    <span class="stage-duration">1 – 3 hours</span>
+                </div>
+                <p class="stage-description">
+                    This is where the vision begins to take shape. The wheel spins, your hands guide, and the clay responds. Centering is everything—without it, nothing holds. This stage is both meditative and demanding, requiring patience and focus.
+                </p>
+                <div class="stage-steps">
+                    <h4>Steps</h4>
+                    <ul>
+                        <li>Centering the clay on the wheel</li>
+                        <li>Opening the center to create the initial form</li>
+                        <li>Pulling the walls upward to shape the vessel</li>
+                        <li>Shaping and refining the form</li>
+                        <li>Removing the piece from the wheel</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 3: Trimming -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-number">Stage 3</span>
+                    <h3 class="stage-title">Trimming</h3>
+                    <span class="stage-duration">30 minutes – 1 hour</span>
+                </div>
+                <p class="stage-description">
+                    Pottery gets better when you remove what doesn't belong. You refine the shape, make it lighter and cleaner, and realize that the first version was never the final version. Sometimes making something beautiful means cutting away, not adding more.
+                </p>
+                <div class="stage-steps">
+                    <h4>Steps</h4>
+                    <ul>
+                        <li>Allowing the piece to dry to leather-hard stage</li>
+                        <li>Re-centering the piece on the wheel (upside down)</li>
+                        <li>Trimming excess clay from the bottom</li>
+                        <li>Creating a foot or base</li>
+                        <li>Smoothing and refining edges</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 4: Drying -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-number">Stage 4</span>
+                    <h3 class="stage-title">Drying</h3>
+                    <span class="stage-duration">1 – 7 days</span>
+                </div>
+                <p class="stage-description">
+                    Patience is required. The piece must dry slowly and evenly to avoid cracks. This is when you step back and let time do its work. At this stage, the clay is called "greenware"—fragile and full of possibility.
+                </p>
+                <div class="stage-steps">
+                    <h4>Steps</h4>
+                    <ul>
+                        <li>Cover lightly to slow drying and prevent cracking</li>
+                        <li>Allow to air dry completely (bone dry)</li>
+                        <li>Handle with extreme care—greenware is very fragile</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 5: Bisque Fire -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-number">Stage 5</span>
+                    <h3 class="stage-title">Bisque Fire</h3>
+                    <span class="stage-duration">12 – 24 hours (including cooling)</span>
+                </div>
+                <p class="stage-description">
+                    The first real surrender. Heat transforms the clay permanently—what was soft becomes hard, what was fragile becomes durable. Once it enters the kiln, part of the outcome belongs to the elements. Small assumptions get exposed.
+                </p>
+                <div class="stage-steps">
+                    <h4>Steps</h4>
+                    <ul>
+                        <li>Load greenware carefully into the kiln</li>
+                        <li>Fire to bisque temperature (around 1800–1900°F / 980–1040°C)</li>
+                        <li>Allow kiln to cool completely before opening</li>
+                        <li>Unload bisqueware—now porous and ready for glaze</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 6: Glazing -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-number">Stage 6</span>
+                    <h3 class="stage-title">Glazing</h3>
+                    <span class="stage-duration">1 – 2 hours</span>
+                </div>
+                <p class="stage-description">
+                    You choose colors and finishes, layering intention onto the surface. You make your best guess about what the piece will become. Glaze is a promise, not a guarantee. The way it looks now is not how it will look after fire.
+                </p>
+                <div class="stage-steps">
+                    <h4>Steps</h4>
+                    <ul>
+                        <li>Clean bisqueware to remove dust</li>
+                        <li>Apply glaze by dipping, brushing, or spraying</li>
+                        <li>Wipe glaze off the bottom (foot) to prevent sticking</li>
+                        <li>Allow glaze to dry before loading into kiln</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 7: Glaze Fire -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-number">Stage 7</span>
+                    <h3 class="stage-title">Glaze Fire</h3>
+                    <span class="stage-duration">12 – 24 hours (including cooling)</span>
+                </div>
+                <p class="stage-description">
+                    The transformation you can't fully watch. Heat, chemistry, timing, and atmosphere all matter. The kiln collaborates whether you want it to or not. This is the reveal—the moment when expectation meets reality, and the finished piece can exceed your plan or ignore it entirely.
+                </p>
+                <div class="stage-steps">
+                    <h4>Steps</h4>
+                    <ul>
+                        <li>Load glazed pieces into the kiln (spacing carefully)</li>
+                        <li>Fire to glaze temperature (around 2200–2400°F / 1200–1300°C)</li>
+                        <li>Allow kiln to cool completely—sometimes overnight</li>
+                        <li>Unload finished pieces</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 8: Buffing & Finishing -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-number">Stage 8</span>
+                    <h3 class="stage-title">Buffing & Finishing</h3>
+                    <span class="stage-duration">15 – 30 minutes</span>
+                </div>
+                <p class="stage-description">
+                    The final care. Small finishing touches matter. You slow down enough to really see the piece. By now, it is no longer the thing you first imagined—and that is usually a good thing. You sand any rough spots and appreciate what emerged.
+                </p>
+                <div class="stage-steps">
+                    <h4>Steps</h4>
+                    <ul>
+                        <li>Sand any rough spots on the foot with sandpaper</li>
+                        <li>Inspect for glaze defects or sharp edges</li>
+                        <li>Clean and polish the finished piece</li>
+                        <li>Admire your work</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="reflection">
+        <div class="container">
+            <h2>What Pottery Taught Me</h2>
+            <p>
+                You never really know, from the moment you first form the piece to the moment it is finished, what it will truly look like. Control is always partial. The process is part collaboration, part surrender. Surprise is not failure. The final form carries more than the original plan. That's the beauty of pottery—it taught me how to enjoy the unexpected.
+            </p>
+        </div>
+    </section>
+</body>
+</html>
